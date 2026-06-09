@@ -1,0 +1,25 @@
+What is Snowflake?
+
+Snowflake is a cloud-based data warehouse that separates storage and compute for scalable analytics.
+
+What is Warehouse?
+
+Warehouse is the compute engine used to execute queries and process data.
+
+What is Database?
+
+A database is a logical container that stores schemas.
+
+What is Schema?
+
+A schema is a logical container inside a database that stores database objects.
+
+What is Table?
+
+A table stores actual business data in rows and columns.
+
+What are the layers of Snowflake Architecture?
+
+1)Services Layer. 
+2)Compute Layer
+3)Storage Layer
