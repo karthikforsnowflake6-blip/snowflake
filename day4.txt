@@ -52,11 +52,10 @@ Stores numeric values.
 
 syntax:
 NUMBER(precision, scale)
-Precision → Total number of digits
-Scale → Number of digits after decimal point
+Precision → Total number of digits---- range upto 38 
+Scale → Number of digits after decimal point----range upto 37
 
 
-EID NUMBER
 SAL NUMBER(10,2)
 
 Example:
@@ -71,7 +70,6 @@ Stores text values(char enclosed within single quotes'').
 syntax:
 varachar(size)
 
-ENAME VARCHAR
 
 Example:
 
@@ -90,36 +88,53 @@ date
 formate:
 'yyyy-mm-dd'
 
-DOJ DATE
 
 Example:
 
 2025-06-01
-TIMESTAMP
+
+4)TIMESTAMP
 
 Stores date and time.
 
-JOIN_TIME TIMESTAMP
+syntax:
+timestamp;
+
+format:
+
+'yyyy-mm-dd hh:mm:ss.mss
 
 Example:
 
 2025-06-01 01:21:22.123
-BOOLEAN
+
+5)BOOLEAN
 
 Stores logical values.
 
-IS_ACTIVE BOOLEAN
+syntax:
+boolean
 
 Example:
 
 TRUE
 FALSE
-Step 6: Create Table
+
+
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx;
+
+Create Table
 Syntax
+
 CREATE TABLE table_name
 (
- column_name datatype
+ column_name datatype,
+ column_name datatype,
+------------------,
+----------------
 );
+
 Example
 CREATE OR REPLACE TABLE EMP
 (
@@ -130,73 +145,55 @@ CREATE OR REPLACE TABLE EMP
  JOIN_TIME TIMESTAMP,
  IS_ACTIVE BOOLEAN
 );
-Real-Time Example
+
+
 EMP Table
 
-EID       → Employee ID
-ENAME     → Employee Name
-SAL       → Salary
-DOJ       → Date of Joining
-JOIN_TIME → Joining Timestamp
-IS_ACTIVE → Employee Active Status
-Step 7: View Table Structure
+
+View Table Structure
 DESC TABLE EMP;
 
-Purpose:
 
-View columns
-View datatypes
-Step 8: View Data
 SELECT * FROM EMP;
 
-Purpose:
+Insert Single Record;
 
-Display all records
-Step 9: Insert Single Record
 INSERT INTO EMP
 (EID,ENAME,SAL,DOJ,JOIN_TIME,IS_ACTIVE)
-VALUES
-(111,'ALLEN',2000,
-'2025-06-01',
-'2025-06-01 01:21:22.123',
-TRUE);
-Step 10: Insert Multiple Records
-INSERT INTO EMP
-(EID,ENAME,SAL,DOJ,JOIN_TIME,IS_ACTIVE)
-VALUES
-(222,'BLAKE',30000,
-'2024-07-01',
-'2024-07-01 01:21:22.123',
-TRUE),
+VALUES(111,'ALLEN',2000,'2025-06-01','2025-06-01 01:21:22.123',TRUE);
 
-(333,'SMITH',40000,
-CURRENT_DATE(),
-CURRENT_TIMESTAMP(),
-TRUE);
-CURRENT_DATE()
 
-Returns today's date.
+ Insert Multiple Records
+INSERT INTO EMP(EID,ENAME,SAL,DOJ,JOIN_TIME,IS_ACTIVE)VALUES(222,'BLAKE',30000,'2024-07-01','2024-07-01 01:21:22.123',TRUE),
+(333,'SMITH',40000,CURRENT_DATE(),CURRENT_TIMESTAMP(),TRUE);
+
+CURRENT_DATE()---Returns today's date.
+
+
 
 SELECT CURRENT_DATE();
 
 Example:
 
 2026-06-09
-CURRENT_TIMESTAMP()
 
-Returns current date and time.
+CURRENT_TIMESTAMP()------Returns current date and time.
+
+
 
 SELECT CURRENT_TIMESTAMP();
 
 Example:
 
 2026-06-09 16:30:25.123
+
 Check Current Timezone
 SHOW PARAMETERS LIKE 'TIMEZONE' IN SESSION;
 
 Purpose:
-
 Check current session timezone.
+
+
 Change Timezone
 ALTER SESSION
 SET TIMEZONE = 'Asia/Kolkata';
@@ -205,29 +202,9 @@ Purpose:
 
 Set Indian Standard Time (IST)
 Real-Time Example
+
 UTC Time
      ↓
 Convert to
 Asia/Kolkata
      ↓
-Indian Time
-Important Commands Summary
-CREATE WAREHOUSE
-CREATE DATABASE
-CREATE SCHEMA
-
-USE WAREHOUSE
-USE DATABASE
-USE SCHEMA
-
-CREATE TABLE
-DESC TABLE
-SELECT *
-
-INSERT
-
-CURRENT_DATE()
-CURRENT_TIMESTAMP()
-
-SHOW PARAMETERS
-ALTER SESSION
