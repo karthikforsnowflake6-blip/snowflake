@@ -1,5 +1,5 @@
 Day 4 – 
-
+create warehous:
 Warehouse provides compute power to run queries.
 
 step-1:
