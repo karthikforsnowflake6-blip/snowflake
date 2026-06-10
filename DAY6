@@ -151,6 +151,7 @@ FROM EMPLOYEES AT(OFFSET=>-600);
 
 5) DROP:
 ++++++++
+DROP is used to permanently delete a table along with its structure and data.
 SYNTAX:
 DROP TABLE TN:
 
@@ -162,6 +163,7 @@ TO RESTORE DROP TABLE:
 
 UNDROP:
 +++++++
+UNDROP is a Snowflake feature used to recover a dropped table within the retention period.
 
 SYNTAX:
 
@@ -179,11 +181,11 @@ II)UPDATE
 III)DELETE
 IV)MERGE:
 
-I) INSERT ALREDY DONE:
-
+I) INSERT (ALREDY DONE):
+INSERT is used to add new rows into a table.
 
 II)UPDATE:
-
+UPDATE is used to modify existing data in a table based on a condition.
 
 SYNTAX:
 UPDATE TN
@@ -198,6 +200,7 @@ SET SAL=10000
 WHERE EID=101;
 
 III)DELETE:
+DELETE is used to remove specific rows from a table based on a condition.
 SYNTAX:
 DELETE FROM TN
 WHERE <FILTER CONDITION>;
