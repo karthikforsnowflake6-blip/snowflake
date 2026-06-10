@@ -57,7 +57,7 @@ DDL:
 ++++
 1)CREATE (ALREDY DONE)
 ++++++++++++++++++++++
-
+USED TO CRATE TABLE
 2)RENAME TABLE:
 ++++++++++++++++
 RENAME TABLE is used to change the name of an existing table without affecting its data or structure.
