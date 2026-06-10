@@ -51,5 +51,7 @@ SELECT ------>Database → Schema → Tables → EMP
 EMP page → Load Data button
 
 
+CHECK-----SELECT * FROM EMP;
+
 
 
