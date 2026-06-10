@@ -1,0 +1,55 @@
+HOW TO LOAD DATA FROM U R LOCAL STORAGE:
++++++++++++++++++++++++++++++++++++++++
+
+
+CSV File Creation Using Notepad
+
+Step 1: Open Notepad
+CREATE TABLE 
+
+CREATE OR REPLACE TABLE EMP
+(
+EID NUMBER,
+ENAME VARCHAR,
+SAL NUMBER
+);
+
+
+
+Step 2: OPEN NOTEPAD AND PASTE THE DATA
+
+101,ALLEN,2000
+102,SMITH,3000
+103,BLAKE,4000
+104,JONES,5000
+105,KING,6000
+
+⚠️ Values must be separated by commas (,).
+
+Step 3: Save File
+
+Click:
+
+File
+ ↓
+Save As
+
+File name:
+
+emp.csv
+
+
+
+✔ Snowflake UI – Local File Load Steps 
+🔵 Step 1: Go to Home
+Click → Home (Top left Snowflake logo)
+🔵 Step 2: UPLOAD LOCAL FILE
+🔵 Step 3:CLICK BROWSE
+🔵 Step 4: SELECT CSV FILE
+SELECT ------>Database → Schema → Tables → EMP
+🔵 Step 5: Click Load Data
+EMP page → Load Data button
+
+
+
+
