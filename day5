@@ -82,7 +82,7 @@ FROM EMP;
 
 
 
-SELECT CURRENT_TIMESTAMP();
+SELECT CURRENT_date();
 select current_timestamp();
 
       SHOW PARAMETERS LIKE 'TIMEZONE' IN SESSION;
