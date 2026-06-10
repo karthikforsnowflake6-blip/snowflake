@@ -45,6 +45,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx;
 
 
 Data Types
+************
 
 1)NUMBER
 
@@ -123,6 +124,9 @@ FALSE
 
 
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx;
+
+DDL(DATA DEFINITION LANGUAGE);
+******************************
 
 Create Table
 Syntax
