@@ -1,4 +1,5 @@
 constraints:
+***************
 
 1. NOT NULL (Enforced)
 It ensures a column cannot store NULL values.
