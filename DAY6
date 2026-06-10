@@ -60,6 +60,7 @@ DDL:
 
 2)RENAME TABLE:
 ++++++++++++++++
+RENAME TABLE is used to change the name of an existing table without affecting its data or structure.
 SYNTAX:
 ALTER TABLE TN
 RENAME TO NEW NAME ;
@@ -72,6 +73,8 @@ RENAME TO EMPLOYEES;
 SELECT * FROM EMPLOYEES;
 3)ALTER:
 ++++++++
+ALTER is used to modify the structure of an existing table.
+
 I)TO ADD COLUMN:
 ---------------
 SYNTAX:
@@ -108,7 +111,7 @@ DROP  COLUMN COL_NAME;
 
 4)TO TRUNCATE TABLE:
 +++++++++++++++++++
-
+TRUNCATE is used to delete all rows from a table while keeping the table structure .
 SYNTAX:
 
 TRUNCATE TABLE TN;
@@ -123,6 +126,7 @@ FROM EMPLOYEES;(NO ROWS SELECTED)
 
 TIME TRAVEL:
 ++++++++++++
+Time Travel allows access to historical data of a table within a retention period(24 HRS), even after DELETE or TRUNCATE operations.
 
 SYNTAX:
 
