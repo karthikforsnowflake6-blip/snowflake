@@ -111,6 +111,23 @@ rollback;
 SELECT * FROM emp;(NO DATAS)
 
 
+__________________________________________________________
+
+
+4)DCL:
++++++++
+
+1)GRANT
+2)REVOKE
+
+
+1)GRANT ASSIGN PERMISSIONS TO USER
+
+STEP1
+_____
+
+
+
 
 
 
