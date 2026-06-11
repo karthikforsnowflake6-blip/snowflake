@@ -123,8 +123,21 @@ __________________________________________________________
 
 1)GRANT ASSIGN PERMISSIONS TO USER
 
-STEP1AJS
+STEP1
 _____
+
+CREATE USER:
+
+SYNTAX :
+
+CREATE USER UN
+PASSWORD = 'PW';
+
+EX:
+CREATE USER PERSON1
+PASSWORD = 'PERSON@123';
+
+
 
 
 
