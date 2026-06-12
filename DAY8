@@ -13,9 +13,6 @@ CREATE OR REPLACE TABLE DEPT (
 CREATE TABLE EMP;
 ++++++++++++++++
 
-
-
-
 CREATE OR REPLACE TABLE EMP (
     EMPNO NUMBER ,
     ENAME VARCHAR,
@@ -54,61 +51,55 @@ EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,COMM,DEPTNO
 7902,FORD,ANALYST,7566,1981-12-03,3000,,20
 7934,MILLER,CLERK,7782,1982-01-23,1300,,10
 
+
+UPLOAD CSV FILE
+
 SELECT * FROM DEPT;
 
 SELECT * FROM EMP;
 
 
+DQL STATEMENTS:
 
 SELECT
-
++++++++
  Data retrieve .
 
 PROJECTION
-
++++++++++++
  Only required columns.
 
 SELECTION
-
++++++++++
  Condition based rows.
 
-DISTINCT
+JOINS
++++++
 
- Duplicate remove.
-
+RETRIEVE DATA FROM MULTIPLE TABLE
 
 
 
 OPERATORS
 ++++++++++
-Arithmetic
+Arithmetic(+ - * /)
+Concatenation(||)
+Comparison( = !=(OR)<>)
 
- + - * /
+Relational( > < >= <=)
 
-Concatenation
+Logical(AND OR NOT)
 
- ||
-
-Comparison
- = !=(OR)<>
-
-Relational
- > < >= <=
-
-Logical
-AND OR NOT
-
-Special Operators
-
-Filtering conditions
-
+Special Operators:
+_________________
 IN / NOT IN
 BETWEEN / NOT BETWEEN
 IS NULL / IS NOT NULL
 LIKE / NOT LIKE
 ILIKE / NOT ILIKE(CASE IN SENSITIVE SIMILAR TO LIKE)
 
-Subquery Operators
+Subquery Operators:
+__________________
 ALL
 ANY
 EXISTS
@@ -116,8 +107,7 @@ NOT EXISTS
 
 
 Set Operators
-
-
+______________
 UNION
 UNION ALL
 INTERSECT
@@ -126,14 +116,31 @@ EXCEPT (Oracle MINUS)
 
 
 
-elect * from emp;
-
+PROJECTION:
+++++++++++++++
 SELECT ENAME FROM EMP;
 
 SELECT ENAME,SAL FROM EMP;
 
-
+DISTINCT:
++++++++++
 SELECT DISTINCT DEPTNO FROM EMP;
+
+EXPRESSION:
+++++++++++
+
+SELECT SAL*12
+FROM EMP;
+
+ALIAS:
++++++
+
+SELECT SAL*12 AS "ANNUAL SAL"
+FROM EMP;
+
+
+SELECTION:
+++++++++++
 
 SELECT *
 FROM EMP
@@ -149,11 +156,6 @@ SELECT *
 FROM EMP
 WHERE DEPTNO !=10;
 
-
-
-
-SELECT SAL*12 AS "ANNUAL SAL"
-FROM EMP;
 
 IN:
 ++++
@@ -276,6 +278,8 @@ FROM EMP;
 
 SELECT COUNT(*)
 FROM EMP;
+
+
 
 SELECT COUNT(*),DEPTNO
 FROM EMP
