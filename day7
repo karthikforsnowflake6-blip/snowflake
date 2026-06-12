@@ -232,3 +232,12 @@ REVOKE ROLE ANALYST FROM USER PERSON1;
 NOW PERSON1 CANNOT ACCES THE TABLE.
 
 
+
+
+| Concept  | Meaning                  |
+| -------- | ------------------------ |
+| MERGE    | UPSERT                   |
+| COMMIT   | SAVE (auto in Snowflake) |
+| ROLLBACK | UNDO                     |
+| GRANT    | GIVE ACCESS              |
+| REVOKE   | REMOVE ACCESS            |
