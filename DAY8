@@ -55,3 +55,90 @@ EMPNO,ENAME,JOB,MGR,HIREDATE,SAL,COMM,DEPTNO
 7934,MILLER,CLERK,7782,1982-01-23,1300,,10
 
 SELECT * FROM DEPT;
+
+SELECT * FROM EMP;
+
+
+
+SELECT
+
+ Data retrieve .
+
+PROJECTION
+
+ Only required columns.
+
+SELECTION
+
+ Condition based rows.
+
+DISTINCT
+
+ Duplicate remove.
+
+
+
+
+OPERATORS
+++++++++++
+Arithmetic
+
+ + - * /
+
+Concatenation
+
+ ||
+
+Comparison
+ = !=(OR)<>
+
+Relational
+ > < >= <=
+
+Logical
+AND OR NOT
+
+Special Operators
+
+Filtering conditions
+
+IN / NOT IN
+BETWEEN / NOT BETWEEN
+IS NULL / IS NOT NULL
+LIKE / NOT LIKE
+ILIKE / NOT ILIKE
+
+Subquery Operators
+ALL
+ANY
+EXISTS
+NOT EXISTS
+
+
+Set Operators
+
+
+UNION
+UNION ALL
+INTERSECT
+EXCEPT (Oracle MINUS)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
