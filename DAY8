@@ -259,6 +259,8 @@ select 'hi '||ename||' how r u'
 from emp;
 
 
+SRF():
++++++
 
 SELECT ENAME,LENGTH(ENAME)
 FROM EMP;
