@@ -1,0 +1,64 @@
+LIMIT;
++++++++
+ LIMIT defines how many rows should be returned from the result set.
+
+
+i want first 2 row:
+------------------
+SELECT *
+FROM EMP
+LIMIT 2 ;
+
+OFFSET:
+++++++
+
+FFSET defines how many rows should be skipped before returning results.
+
+SELECT *
+FROM EMP
+LIMIT 2 OFFSET 2;
+
+i want 3rd and 4th row.
+------------------------
+ Skip first 2 rows (OFFSET 2)
+ Return next 2 rows (LIMIT 2)
+
+i want 7th row.
+----------------------
+SELECT *
+FROM EMP
+LIMIT 1 OFFSET 6;
+
+
+
+
+TO FIND MAX SALERY BY USING OFFSET AND LIMIT:(DESC)
+----------------------------------------------
+
+2ND MAX SAL:
+
+SELECT DISTINCT SAL
+FROM EMP
+ORDER BY SAL DESC
+LIMIT 1 OFFSET 2;
+
+5TH MAX SAL:
+
+SELECT DISTINCT SAL
+FROM EMP
+ORDER BY SAL DESC
+LIMIT 1 OFFSET 4;
+
+
+
+
+TO FIND MIN SALERY BY USING OFFSET AND LIMIT:(ACS)
+---------------------------------------------
+
+
+3RD MIN :
+
+SELECT DISTINCT SAL
+FROM EMP
+ORDER BY SAL ASC
+LIMIT 1 OFFSET 2;
