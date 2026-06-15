@@ -62,3 +62,72 @@ SELECT DISTINCT SAL
 FROM EMP
 ORDER BY SAL ASC
 LIMIT 1 OFFSET 2;
+
+
+
+
+
+SUBQUERY
+++++++++
+
+CASE1:
+------
+SELECT *
+FROM EMP
+WHERE SAL>(SELECT SAL  
+          FROM EMP 
+         WHERE ENAME='JAMES');
+
+CASE2:
+------
+SELECT DNAME 
+FROM DEPT
+WHERE DEPTNO=(SELECT DEPTNO
+             FROM EMP 
+              WHERE ENAME='JAMES');
+
+SINGLE ROW SUBQUERY:(=,<,>)
+--------------------
+SELECT *
+FROM EMP
+WHERE SAL>(SELECT SAL  
+          FROM EMP 
+         WHERE ENAME='JAMES');
+
+MULTI ROW SUBQUERY:
+--------------------
+
+EX1:(IN)
+
+SELECT DNAME 
+FROM DEPT
+WHERE DEPTNO IN(SELECT DEPTNO
+             FROM EMP 
+              WHERE JOB='CLERK');
+
+EX2:(>ALL,>ANY,<ALL,<ANY)
+
+SELECT *
+FROM EMP
+WHERE SAL>ANY(SELECT SAL
+             FROM EMP 
+              WHERE JOB='CLERK');
+
+
+SELECT *
+FROM EMP
+WHERE SAL>ALL(SELECT SAL
+             FROM EMP 
+              WHERE JOB='CLERK');
+
+
+NESTED SUBQUERY:
+++++++++++++++++
+SELECT MAX(SAL)
+FROM EMP
+WHERE SAL<(SELECT MAX(SAL)
+           FROM EMP 
+           WHERE SAL<(SELECT MAX(SAL)
+                     FROM EMP)
+           );
+
