@@ -304,4 +304,146 @@ AND E2.JOB IN ('PRESIDENT','MANAGER')
 AND E3.SAL >= E2.SAL;
 
 
-AND (E3.SAL >= E2.SAL OR E3.SAL IS NULL);
+
+SINGLE ROW FUNCTION
++++++++++++++++++++
+
+
+
+1)🔹 UPPER()
+
+CONVERT THE STRING INTO UPPER CASE:
+
+Syntax:
+
+SELECT UPPER(string);
+
+Example:
+
+SELECT UPPER('sql');
+-- SQL
+
+
+
+
+2_)🔹 LOWER()
+
+CONVERT THE STRING INTO LOWER  CASE:
+
+Syntax:
+
+SELECT LOWER(column_or_string);
+
+Example:
+
+SELECT LOWER(ename)
+FROM emp;
+
+
+3)🔹 LENGTH():
+
+RETURNS NUMBER OF CHARACTERS.
+
+Syntax:
+
+SELECT LENGTH(string);
+
+Example:
+
+SELECT LENGTH('SNOWFLAKE');
+-- 9
+
+
+✂️ 3. SUBSTRING FUNCTION
+🔹 SUBSTR()
+
+Syntax:
+
+SELECT SUBSTR(string, start_position, [length]);
+
+Examples:
+
+SELECT SUBSTR('BANANA', 4, 5);
+-- ANA
+
+SELECT SUBSTR('BANANA', -5, 2);
+-- AN
+
+SELECT SUBSTR('SNOWFLAKE', 1, 4);
+-- SNOW
+
+
+
+🔁 4. REPLACE FUNCTION
+🔹 REPLACE()
+
+Syntax:
+
+SELECT REPLACE(string, old_value, new_value);
+
+Example:
+
+SELECT REPLACE('SNOWFLAKE', 'SNOW', 'DATA');
+-- DATAFLAKE
+📅 5. DATE FORMATTING
+🔹 TO_CHAR()
+
+Syntax:
+
+SELECT TO_CHAR(date_column, 'format');
+
+Example:
+
+SELECT TO_CHAR(HIREDATE, 'DD-MM-YYYY')
+FROM emp;
+🧹 6. TRIM FUNCTIONS
+🔹 TRIM()
+
+Removes both sides
+
+Syntax:
+
+SELECT TRIM('   text   ');
+
+Example:
+
+SELECT TRIM('   SNOWFLAKE   ');
+-- SNOWFLAKE
+🔹 LTRIM()
+
+Removes LEFT spaces/characters
+
+SELECT LTRIM('   SQL');
+-- SQL
+
+With character:
+
+SELECT LTRIM('000123', '0');
+-- 123
+🔹 RTRIM()
+
+Removes RIGHT spaces/characters
+
+SELECT RTRIM('0001230', '0');
+-- 123
+🔹 TRIM with character
+SELECT TRIM('AHAAAAA', 'A');
+-- H
+🔄 7. LENGTH WITH TRIM
+SELECT LENGTH(LTRIM('SQL   '));
+SELECT LENGTH('        SQL        ');
+🔀 8. NULL FUNCTIONS
+🔹 COALESCE()
+
+Returns first NOT NULL value
+
+Syntax:
+
+SELECT COALESCE(value1, value2, value3);
+
+Example:
+
+SELECT COALESCE(COMM, SAL, 0)
+FROM emp;
+SELECT COALESCE(SAL, COMM, 500)
+FROM emp;
