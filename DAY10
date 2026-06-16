@@ -354,8 +354,7 @@ SELECT LENGTH('SNOWFLAKE');
 -- 9
 
 
-✂️ 3. SUBSTRING FUNCTION
-🔹 SUBSTR()
+4)🔹 SUBSTR()
 SUBRACT THE PART OF STRING.
 
 Syntax:
@@ -399,18 +398,27 @@ SELECT ENAME
 FROM EMP
 WHERE SUBSTR(ENAME, -1) IN ('A','E','I','O','U');
 
-🔁 4. REPLACE FUNCTION
-🔹 REPLACE()
+
+
+
+
+5)🔹 REPLACE()
 
 Syntax:
 
-SELECT REPLACE(string, old_value, new_value);
+SELECT REPLACE(string, old_value, [new_value]);
 
 Example:
 
 SELECT REPLACE('SNOWFLAKE', 'SNOW', 'DATA');
 -- DATAFLAKE
-📅 5. DATE FORMATTING
+
+
+SELECT REPLACE('SNOWFLAKE', 'SNOW');
+
+--FLAKE
+
+
 🔹 TO_CHAR()
 
 Syntax:
