@@ -311,6 +311,7 @@ SINGLE ROW FUNCTION
 
 
 1)🔹 UPPER()
++++++++++++++
 
 CONVERT THE STRING INTO UPPER CASE:
 
@@ -327,6 +328,7 @@ SELECT UPPER('sql');
 
 
 2_)🔹 LOWER()
+++++++++++++++
 
 CONVERT THE STRING INTO LOWER  CASE:
 
@@ -341,6 +343,7 @@ FROM emp;
 
 
 3)🔹 LENGTH():
+++++++++++++++
 
 RETURNS NUMBER OF CHARACTERS.
 
@@ -355,6 +358,8 @@ SELECT LENGTH('SNOWFLAKE');
 
 
 4)🔹 SUBSTR()
++++++++++++++
+
 SUBRACT THE PART OF STRING.
 
 Syntax:
@@ -403,6 +408,7 @@ WHERE SUBSTR(ENAME, -1) IN ('A','E','I','O','U');
 
 
 5)🔹 REPLACE()
+++++++++++++++
 
 Syntax:
 
@@ -419,20 +425,10 @@ SELECT REPLACE('SNOWFLAKE', 'SNOW');
 --FLAKE
 
 
-🔹 TO_CHAR()
+6)🔹 TRIM()
++++++++++++
 
-Syntax:
-
-SELECT TO_CHAR(date_column, 'format');
-
-Example:
-
-SELECT TO_CHAR(HIREDATE, 'DD-MM-YYYY')
-FROM emp;
-🧹 6. TRIM FUNCTIONS
-🔹 TRIM()
-
-Removes both sides
+Removes SPACE OR CHAR FROM STARTING OR ENDING OR both sides
 
 Syntax:
 
@@ -441,42 +437,68 @@ SELECT TRIM('   text   ');
 Example:
 
 SELECT TRIM('   SNOWFLAKE   ');
--- SNOWFLAKE
+
+SNOWFLAKE
+
 🔹 LTRIM()
 
 Removes LEFT spaces/characters
 
-SELECT LTRIM('   SQL');
--- SQL
+SELECT LTRIM('   SQL   ');  
 
-With character:
+SQL---' 
 
-SELECT LTRIM('000123', '0');
--- 123
 🔹 RTRIM()
 
 Removes RIGHT spaces/characters
 
+
+SELECT RTRIM('   SQL    ');
+
+---SQL
+
+
+
+With character:
+
+SELECT LTRIM('0001230', '0');
+-- 1230
+
+
 SELECT RTRIM('0001230', '0');
--- 123
+-- 000123
+
 🔹 TRIM with character
 SELECT TRIM('AHAAAAA', 'A');
 -- H
-🔄 7. LENGTH WITH TRIM
-SELECT LENGTH(LTRIM('SQL   '));
+
+
+ LENGTH WITH TRIM:
+-----------------------
+
+SELECT LENGTH(LTRIM('SQL   '));-----6
 SELECT LENGTH('        SQL        ');
-🔀 8. NULL FUNCTIONS
-🔹 COALESCE()
+
+
+7)🔹 COALESCE()
++++++++++++++++
 
 Returns first NOT NULL value
 
 Syntax:
 
-SELECT COALESCE(value1, value2, value3);
+SELECT COALESCE(    value1,       value2,     value3);
+                  (IF NULL)------>(IF NULL)------>
 
 Example:
 
-SELECT COALESCE(COMM, SAL, 0)
-FROM emp;
+I WANT TO DISPLAY SAL,COMM IF EMPLOYEE EARN SAL DISPLAY SAL ELSE ELSE DISPLAY COMM IF COMM ALSO NULL THEN
+GIVE NEW VALUE OF 500 RS.
+
 SELECT COALESCE(SAL, COMM, 500)
 FROM emp;
+
+
+
+
+
