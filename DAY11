@@ -48,13 +48,15 @@ FROM EMP;
 
 
 9) NULLIF
+++++++++++
 
 Returns NULL if both values are equal
+ Syntax:
 
-🧠 Syntax:
 NULLIF(ARG1, ARG2)
-💡 Meaning:
-ARG1 = ARG2 → NULL
+
+if ARG1 = ARG2 → NULL
+if ARG1 != ARG2 → return 1st arg.
 
 SELECT NULLIF(10, 10);---10
 
