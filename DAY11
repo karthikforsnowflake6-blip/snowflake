@@ -74,35 +74,68 @@ FROM EMP;
 
 
 
-else → expr1
-🔥 5. ROUND
-📌 Definition:
+
+10). ROUND:
++++++++++++
 
 Rounds a number to nearest value
 
-🧠 Syntax:
-ROUND(number, decimal_places)
-🔥 6. TRUNC
-📌 Definition:
+Syntax:
+ROUND(number)
+
+ex:
+SELECT ROUND(12.5);----13
+
+SELECT ROUND(2.9);----3
+
+
+SELECT ROUND(2.1);----2
+
+ 11). TRUNC:
++++++++++++
 
 Removes decimal part (no rounding)
 
-🧠 Syntax:
-TRUNC(number, decimal_places)
-🔥 7. CEIL
-📌 Definition:
+Syntax:
+TRUNC(number)
+
+ex:
+SELECT ROUND(12.5);----12
+
+SELECT ROUND(2.9);----2
+
+
+
+12). CEIL:
++++++++++
 
 Rounds UP to nearest integer
 
-🧠 Syntax:
-CEIL(number)
-🔥 8. FLOOR
-📌 Definition:
+Syntax:
+CEIL(number);
+
+SELECT ceil(12.5);----13
+
+SELECT ceil(2.1);----3
+
+
+
+13) FLOOR
+
 
 Rounds DOWN to nearest integer
 
-🧠 Syntax:
+Syntax:
 FLOOR(number)
+
+SELECT floor(12.5);----12
+
+SELECT floor(2.9);----2
+
+SELECT floor(-12.7);----      -13
+
+
+
 🔥 9. MOD
 📌 Definition:
 
