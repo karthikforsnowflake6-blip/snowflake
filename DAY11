@@ -45,25 +45,33 @@ SELECT SAL,COMM,SAL+NVL2(COMM,COMM,100)
 FROM EMP;
 
 
-🔥 3. COALESCE
-📌 Definition:
 
-Returns first non-null value
 
-🧠 Syntax:
-COALESCE(expr1, expr2, expr3, ...)
-💡 Meaning:
-Checks left → right
-First NOT NULL is returned
-🔥 4. NULLIF
-📌 Definition:
+9) NULLIF
 
 Returns NULL if both values are equal
 
 🧠 Syntax:
-NULLIF(expr1, expr2)
+NULLIF(ARG1, ARG2)
 💡 Meaning:
-expr1 = expr2 → NULL
+ARG1 = ARG2 → NULL
+
+SELECT NULLIF(10, 10);---10
+
+SELECT NULLIF(10, 2);---null
+
+
+select comm
+from emp;
+(one person earning 0 as a comm) i dont want to display zero instead of display null.
+
+
+SELECT ENAME,COMM,NULLIF(COMM,0)
+FROM EMP;
+
+
+
+
 else → expr1
 🔥 5. ROUND
 📌 Definition:
