@@ -517,7 +517,7 @@ SELECT TRIM('AHAAAAA', 'A');
 -----------------------
 
 SELECT LENGTH(LTRIM('    SQL   '));-----6
-SELECT LENGTH('        SQL        ');
+SELECT LENGTH('        SQL        ');-----19
 
 
 7)🔹 COALESCE()
