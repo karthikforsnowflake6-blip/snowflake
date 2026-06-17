@@ -195,13 +195,56 @@ Syntax:
 CAST(value AS datatype)
 
 
-🔥 13. TRY_CAST
-📌 Definition:
+
+SELECT CAST('100' AS NUMBER);
+-- 100
+
+
+SELECT HIREDATE 
+FROM EMP;
+
+
+SELECT CAST(HIREDATE AS TIMESTAMP)
+FROM EMP;
+
+SELECT CAST(CURRENT_TIMESTAMP() AS DATE );
+
+--2026-06-17
+
+SELECT CAST('ABC' AS NUMBER)
+FROM EMP; 
+
+(error) we cannot conver abc as number.
+
+
+
+SELECT CAST(SAL AS VARCHAR)
+FROM EMP;
+
+
+17) TRY_CAST
++++++++++++++
 
 Same as CAST but fails safely (returns NULL instead of error)
 
-🧠 Syntax:
-TRY_CAST(expression AS datatype)
+Syntax:
+TRY_CAST(value AS datatype)
+
+
+SELECT CAST('ABC' AS NUMBER)
+FROM EMP; 
+
+(error) we cannot conver abc as number.
+
+but:
+
+
+SELECT try_CAST('ABC' AS NUMBER)
+FROM EMP; 
+
+(no error only u get null).
+
+
 🔥 14. IFF
 📌 Definition:
 
