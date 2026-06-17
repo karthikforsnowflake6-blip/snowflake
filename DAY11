@@ -301,5 +301,22 @@ SELECT DECODE(20,
               'OTHER');
 -- IT
 
+20)reverse:
+++++++++++
+
+syntax:
+
+reverse(string);
+
+
 
 ex:
+
+
+
+SELECT REVERSE(ENAME)
+FROM EMP;
+
+--HTIMS
+
+
