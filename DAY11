@@ -10,7 +10,7 @@ If ARG is NULL → return ARG2
 Else → return ARG1
 
 
-EX1:
+EX:
 
 SELECT SAL,COMM,SAL+COMM
 FROM EMP;(RESULT ALSO NULL)
@@ -31,8 +31,10 @@ IF ARG1 NOT NULL → second value
 IF ARG NULL → third value
 
 
-1)DISPLAY THE MESSAGE EMPLOYEES EARNING COMM OR NOT.
 EX:
+
+
+1)DISPLAY THE MESSAGE EMPLOYEES EARNING COMM OR NOT.
 
 SELECT COMM,NVL2(COMM,'YES EARNING','NOT EARNING')
 FROM EMP;
@@ -57,6 +59,9 @@ NULLIF(ARG1, ARG2)
 
 if ARG1 = ARG2 → NULL
 if ARG1 != ARG2 → return 1st arg.
+
+EX:
+
 
 SELECT NULLIF(10, 10);---10
 
@@ -84,6 +89,7 @@ Syntax:
 ROUND(number)
 
 ex:
+
 SELECT ROUND(12.5);----13
 
 SELECT ROUND(2.9);----3
@@ -114,6 +120,9 @@ Rounds UP to nearest integer
 Syntax:
 CEIL(number);
 
+
+EX:
+
 SELECT ceil(12.5);----13
 
 SELECT ceil(2.1);----3
@@ -127,6 +136,8 @@ Rounds DOWN to nearest integer
 
 Syntax:
 FLOOR(number)
+
+
 
 SELECT floor(12.5);----12
 
@@ -159,7 +170,8 @@ select *
 from emp 
 where mod(sal,2)!=0;
 
- 114) CURRENT_DATE
+ 14) CURRENT_DATE
+++++++++++++++++
 
 Returns today's date
 
@@ -174,6 +186,7 @@ select CURRENT_DATE();
 
 
 15) CURRENT_TIMESTAMP
+++++++++++++++++++++++
 
 Returns current date + time
 
@@ -194,6 +207,7 @@ Converts one datatype to another
 Syntax:
 CAST(value AS datatype)
 
+EX:
 
 
 SELECT CAST('100' AS NUMBER);
@@ -230,6 +244,7 @@ Same as CAST but fails safely (returns NULL instead of error)
 Syntax:
 TRY_CAST(value AS datatype)
 
+EX:
 
 SELECT CAST('ABC' AS NUMBER)
 FROM EMP; 
@@ -254,6 +269,7 @@ Syntax:
 IFF(condition, true_value, false_value)
 
 ex:
+
 SELECT IFF(5000>3000,'HIGH','LOW');
 -- HIGH
 
