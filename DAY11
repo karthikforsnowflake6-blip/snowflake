@@ -136,13 +136,23 @@ SELECT floor(-12.7);----      -13
 
 
 
-🔥 9. MOD
-📌 Definition:
+ 13). MOD:
++++++++++++
+
+
 
 Returns remainder of division
 
-🧠 Syntax:
+Syntax:
 MOD(numerator, denominator)
+
+ex:
+
+select *
+from emp 
+where mod(sal,2)=0;
+
+
 🔥 10. CURRENT_DATE
 📌 Definition:
 
