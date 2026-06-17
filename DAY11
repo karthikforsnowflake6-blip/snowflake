@@ -260,13 +260,46 @@ SELECT IFF(5000>3000,'HIGH','LOW');
 SELECT IFF(1000>3000,'HIGH','LOW');
 -- LOW
 
-🔥 15. DECODE
-📌 Definition:
+ 19. DECODE:
++++++++++++
 
 Multi-condition IF-ELSE alternative
 
-🧠 Syntax:
+Syntax:
 DECODE(expr,
        value1, result1,
        value2, result2,
        default_result)
+
+
+
+ex:
+
+
+-- DECODE
+SELECT DECODE(20,
+              10,'HR',
+              20,'IT',
+              'OTHER');
+-- HR
+
+
+
+
+SELECT DECODE(2,
+              1,'JAN',
+              2,'FEB',
+              3,'MAR',
+              4,'APR',
+              'INVALID');
+--FEB
+              
+
+SELECT DECODE(20,
+              10,'HR',
+              20,'IT',
+              'OTHER');
+-- IT
+
+
+ex:
