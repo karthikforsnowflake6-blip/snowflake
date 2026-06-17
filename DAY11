@@ -147,33 +147,54 @@ Syntax:
 MOD(numerator, denominator)
 
 ex:
+details of employee earning even sal.
 
 select *
 from emp 
 where mod(sal,2)=0;
 
+details of employee earning odd sal
 
-🔥 10. CURRENT_DATE
-📌 Definition:
+select *
+from emp 
+where mod(sal,2)!=0;
+
+ 114) CURRENT_DATE
 
 Returns today's date
 
-🧠 Syntax:
+Syntax:
 CURRENT_DATE()
-🔥 11. CURRENT_TIMESTAMP
-📌 Definition:
+
+ex:
+select CURRENT_DATE();
+
+2026-06-17
+
+
+
+15) CURRENT_TIMESTAMP
 
 Returns current date + time
 
-🧠 Syntax:
+Syntax:
 CURRENT_TIMESTAMP()
-🔥 12. CAST
-📌 Definition:
+
+ex:
+select CURRENT_TIMESTAMP();
+
+2026-06-17 18:57:12.123
+
+
+16) CAST:
++++++++++
 
 Converts one datatype to another
 
-🧠 Syntax:
-CAST(expression AS datatype)
+Syntax:
+CAST(value AS datatype)
+
+
 🔥 13. TRY_CAST
 📌 Definition:
 
