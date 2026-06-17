@@ -245,13 +245,21 @@ FROM EMP;
 (no error only u get null).
 
 
-🔥 14. IFF
-📌 Definition:
+18). IFF
+++++++++
 
 Simple IF condition function
 
-🧠 Syntax:
+Syntax:
 IFF(condition, true_value, false_value)
+
+ex:
+SELECT IFF(5000>3000,'HIGH','LOW');
+-- HIGH
+
+SELECT IFF(1000>3000,'HIGH','LOW');
+-- LOW
+
 🔥 15. DECODE
 📌 Definition:
 
