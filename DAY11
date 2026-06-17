@@ -1,0 +1,147 @@
+8). NVL
++++++++
+
+Replaces NULL with a OTHER value
+
+Syntax:
+NVL(ARG1, ARG2)
+
+If ARG is NULL → return ARG2
+Else → return ARG1
+
+
+EX1:
+
+SELECT SAL,COMM,SAL+COMM
+FROM EMP;(RESULT ALSO NULL)
+
+
+SELECT SAL,COMM,SAL+NVL(COMM,0)
+FROM EMP;(NO NULL)
+
+ 2. NVL2
+++++++++
+
+Checks NULL and returns 2 different values
+
+Syntax:
+NVL2(expr, value_if_not_null, value_if_null)
+
+IF ARG1 NOT NULL → second value
+IF ARG NULL → third value
+
+
+1)DISPLAY THE MESSAGE EMPLOYEES EARNING COMM OR NOT.
+EX:
+
+SELECT COMM,NVL2(COMM,'YES EARNING','NOT EARNING')
+FROM EMP;
+
+
+2)DISPLAY TOTAL SAL(SAL+COMM) IF THEY EARN COMM THEN DONT CHANGE THE COMM  ELSE GIVE NEW COMM AS 100.
+
+
+SELECT SAL,COMM,SAL+NVL2(COMM,COMM,100)
+FROM EMP;
+
+
+🔥 3. COALESCE
+📌 Definition:
+
+Returns first non-null value
+
+🧠 Syntax:
+COALESCE(expr1, expr2, expr3, ...)
+💡 Meaning:
+Checks left → right
+First NOT NULL is returned
+🔥 4. NULLIF
+📌 Definition:
+
+Returns NULL if both values are equal
+
+🧠 Syntax:
+NULLIF(expr1, expr2)
+💡 Meaning:
+expr1 = expr2 → NULL
+else → expr1
+🔥 5. ROUND
+📌 Definition:
+
+Rounds a number to nearest value
+
+🧠 Syntax:
+ROUND(number, decimal_places)
+🔥 6. TRUNC
+📌 Definition:
+
+Removes decimal part (no rounding)
+
+🧠 Syntax:
+TRUNC(number, decimal_places)
+🔥 7. CEIL
+📌 Definition:
+
+Rounds UP to nearest integer
+
+🧠 Syntax:
+CEIL(number)
+🔥 8. FLOOR
+📌 Definition:
+
+Rounds DOWN to nearest integer
+
+🧠 Syntax:
+FLOOR(number)
+🔥 9. MOD
+📌 Definition:
+
+Returns remainder of division
+
+🧠 Syntax:
+MOD(numerator, denominator)
+🔥 10. CURRENT_DATE
+📌 Definition:
+
+Returns today's date
+
+🧠 Syntax:
+CURRENT_DATE()
+🔥 11. CURRENT_TIMESTAMP
+📌 Definition:
+
+Returns current date + time
+
+🧠 Syntax:
+CURRENT_TIMESTAMP()
+🔥 12. CAST
+📌 Definition:
+
+Converts one datatype to another
+
+🧠 Syntax:
+CAST(expression AS datatype)
+🔥 13. TRY_CAST
+📌 Definition:
+
+Same as CAST but fails safely (returns NULL instead of error)
+
+🧠 Syntax:
+TRY_CAST(expression AS datatype)
+🔥 14. IFF
+📌 Definition:
+
+Simple IF condition function
+
+🧠 Syntax:
+IFF(condition, true_value, false_value)
+🔥 15. DECODE
+📌 Definition:
+
+Multi-condition IF-ELSE alternative
+
+🧠 Syntax:
+DECODE(expr,
+       value1, result1,
+       value2, result2,
+       default_result)
