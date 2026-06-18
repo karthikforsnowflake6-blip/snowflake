@@ -22,7 +22,6 @@ FROM EMP;(NO NULL)
  2. NVL2
 ++++++++
 
-Checks NULL and returns 2 different values
 
 Syntax:
 NVL2(expr, value_if_not_null, value_if_null)
