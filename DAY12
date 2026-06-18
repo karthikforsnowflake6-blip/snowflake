@@ -216,54 +216,71 @@ DATEADD(DAY/MONTH/YEAR/HOUR/MINUTE/SECOND, <value>, <date>)
 
 Add Days:
 
-SELECT DATEADD(DAY, 7, CURRENT_DATE());
-➕ Add Months
-SELECT DATEADD(MONTH, 10, CURRENT_DATE());
-➕ Add Years
-SELECT DATEADD(YEAR, 1, CURRENT_DATE());
-🔹 Practical Examples
-1. ➕ Add 10 Days
+SELECT DATEADD(DAY, 7, CURRENT_DATE());----2026-09-20----->2026-09-27
+
+ Add Months
+
+SELECT DATEADD(MONTH, 1, CURRENT_DATE());----2026-09-20------>2026-10-20
+
+Add Years
+
+SELECT DATEADD(YEAR, 1, CURRENT_DATE());-----2026-09-20------>2027-09-20
+
+Practical Examples
+
+Add 10 Days
 SELECT DATEADD(DAY, 10, '2026-06-18');
 
-📌 Output:
+Output:
 
 2026-06-28
-2. ➕ Add 2 Months
+
+ Add 2 Months
+
 SELECT DATEADD(MONTH, 2, '2026-06-18');
 
-📌 Output:
+ Output:
 
 2026-08-18
-3. ➕ Add 1 Year
-SELECT DATEADD(YEAR, 1, '2026-06-18');
 
-📌 Output:
+
+
+ Output:
 
 2027-06-18
-4. ➖ Subtract 5 Days
+
+Subtract 5 Days
+
 SELECT DATEADD(DAY, -5, '2026-06-18');
 
-📌 Output:
+Output:
 
 2026-06-13
-🔹 Real-Time Use Cases
-🟢 Employee Probation End Date (90 Days)
-SELECT DATEADD(DAY, 90, CURRENT_DATE()) AS PROBATION_END;
-🟢 Employee Anniversary Date
-SELECT ENAME,
-       HIREDATE,
-       DATEADD(YEAR, 1, HIREDATE) AS ANNIVERSARY
+
+Real-Time Use Cases
+Employee Probation End Date (90 Days)---NOTICE PERIODE
+
+SELECT DATEADD(DAY, 90, CURRENT_DATE()) ;
+
+Employee Anniversary Date
+
+SELECT ENAME,HIREDATE, DATEADD(YEAR, 1, HIREDATE) 
 FROM EMP;
-🔹 Time-Based Additions
-➕ Add Hours
+
+
+Add Hours:
+
 SELECT DATEADD(HOUR, 5, '2026-06-18 10:00:00');
 -- 2026-06-18 15:00:00.000
-➕ Add Minutes
+
+Add Minutes:
+
 SELECT DATEADD(MINUTE, 15, '2026-06-18 10:00:00');
 -- 2026-06-18 10:15:00.000
-➕ Add Seconds
-SELECT DATEADD(SECOND, 30, '2026-06-18 10:00:00');
-🔹 Common DATEADD Parts
+
+ Add Seconds:
+
+SELECT DATEADD(SECOND, 30, '2026-06-18 10:00:00'); Common DATEADD Parts
 DAY
 MONTH
 YEAR
