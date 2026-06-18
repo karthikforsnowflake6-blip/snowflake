@@ -130,37 +130,6 @@ SELECT TO_CHAR(CURRENT_TIMESTAMP, 'HH24:MI:SS');-----19:10:18
 
 
 
-YEAR
-+++++
-
-YYYY
-YY
-
-MONTH
-+++++
-
-MON
-MMMM
-MM
-
-DAY
-
-++++
-
-DY
-DD
-
-TIME
-++++++
-HH24
-HH12
-MI
-SS
-
-FRACTIONAL SECOND:
-++++++++++++++++++
-FF3
-
 
 
 
@@ -170,6 +139,7 @@ FF3
 
 
 2)DATEDIFF() ;
++++++++++++++++
 
 RETURN NO OF DAY/MONTH/YEAR BETWEEN GIVEN TWO DATE.
 
@@ -230,4 +200,82 @@ SELECT *
 FROM EMP
 WHERE DATEDIFF(YEAR, HIREDATE, CURRENT_DATE()) > 40;
 
+
+
+
+
+
+
+
+3)DATEADD() :
+++++++++++++
+
+🔹 Syntax
+DATEADD(DAY/MONTH/YEAR/HOUR/MINUTE/SECOND, <value>, <date>)
+🔹 Basic Examples
+➕ Add Days
+SELECT DATEADD(DAY, 7, CURRENT_DATE());
+➕ Add Months
+SELECT DATEADD(MONTH, 10, CURRENT_DATE());
+➕ Add Years
+SELECT DATEADD(YEAR, 1, CURRENT_DATE());
+🔹 Practical Examples
+1. ➕ Add 10 Days
+SELECT DATEADD(DAY, 10, '2026-06-18');
+
+📌 Output:
+
+2026-06-28
+2. ➕ Add 2 Months
+SELECT DATEADD(MONTH, 2, '2026-06-18');
+
+📌 Output:
+
+2026-08-18
+3. ➕ Add 1 Year
+SELECT DATEADD(YEAR, 1, '2026-06-18');
+
+📌 Output:
+
+2027-06-18
+4. ➖ Subtract 5 Days
+SELECT DATEADD(DAY, -5, '2026-06-18');
+
+📌 Output:
+
+2026-06-13
+🔹 Real-Time Use Cases
+🟢 Employee Probation End Date (90 Days)
+SELECT DATEADD(DAY, 90, CURRENT_DATE()) AS PROBATION_END;
+🟢 Employee Anniversary Date
+SELECT ENAME,
+       HIREDATE,
+       DATEADD(YEAR, 1, HIREDATE) AS ANNIVERSARY
+FROM EMP;
+🔹 Time-Based Additions
+➕ Add Hours
+SELECT DATEADD(HOUR, 5, '2026-06-18 10:00:00');
+-- 2026-06-18 15:00:00.000
+➕ Add Minutes
+SELECT DATEADD(MINUTE, 15, '2026-06-18 10:00:00');
+-- 2026-06-18 10:15:00.000
+➕ Add Seconds
+SELECT DATEADD(SECOND, 30, '2026-06-18 10:00:00');
+🔹 Common DATEADD Parts
+DAY
+MONTH
+YEAR
+HOUR
+MINUTE
+SECOND
+
+If you want, I can also give you:
+✔ 
+DATEADD vs DATEDIFF difference
+✔ 
+Exam MCQs
+✔ 
+Real interview questions
+✔ 
+Practice exercises with answers
 
