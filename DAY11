@@ -62,9 +62,9 @@ if ARG1 != ARG2 → return 1st arg.
 EX:
 
 
-SELECT NULLIF(10, 10);---10
+SELECT NULLIF(10, 10);---NULL
 
-SELECT NULLIF(10, 2);---null
+SELECT NULLIF(10, 2);---10
 
 
 select comm
