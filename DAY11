@@ -1,7 +1,7 @@
 8). NVL
 +++++++
 
-Replaces NULL with a OTHER value
+Replaces NULL with a ANOTHER value
 
 Syntax:
 NVL(ARG1, ARG2)
