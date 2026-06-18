@@ -325,9 +325,7 @@ syntax:
 reverse(string);
 
 
-
 ex:
-
 
 
 SELECT REVERSE(ENAME)
