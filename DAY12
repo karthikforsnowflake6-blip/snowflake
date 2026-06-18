@@ -7,6 +7,42 @@ SYNTAX:
 
 TO_CHAR(<DATE_OR_TIMESTAMP>, '<FORMAT_MODEL>');
 
+FORMATE_MODELS:
+----------------
+
+YEAR
++++++
+
+YYYY
+YY
+
+MONTH
++++++
+
+MON
+MMMM
+MM
+
+DAY
+
+++++
+
+DY
+DD
+
+TIME
+++++++
+HH24
+HH12
+MI
+SS
+
+FRACTIONAL SECOND:
+++++++++++++++++++
+FF3
+
+
+
 1)YEAR FORMATS:
 
 SELECT  TO_CHAR(CURRENT_TIMESTAMP(), 'YYYY');-----2025
@@ -64,6 +100,9 @@ SELECT ENAME,TO_CHAR(HIREDATE,'MON-YYYY')
 FROM EMP;------------JAN-2026
 
 
+
+
+
 SPECIFIC MONTH + YEAR FILTER
 
 SELECT *
@@ -89,5 +128,106 @@ SELECT TO_CHAR(CURRENT_DATE, 'DD-MON-YYYY');-----21-SEP-2026
 SELECT TO_CHAR(CURRENT_TIMESTAMP, 'HH24:MI:SS');-----19:10:18
 
 
+
+
+YEAR
++++++
+
+YYYY
+YY
+
+MONTH
++++++
+
+MON
+MMMM
+MM
+
+DAY
+
+++++
+
+DY
+DD
+
+TIME
+++++++
+HH24
+HH12
+MI
+SS
+
+FRACTIONAL SECOND:
+++++++++++++++++++
+FF3
+
+
+
+
+
+
+
+
+
+2)DATEDIFF() ;
+
+RETURN NO OF DAY/MONTH/YEAR BETWEEN GIVEN TWO DATE.
+
+🔹 Syntax
+DATEDIFF(DAY/MONTH/YEAR, <start_date>, <end_date>)
+1) NO OF Days Difference:
+
+SELECT DATEDIFF(DAY, '2026-06-01', '2026-06-11');
+-- Output: 10
+2)NO OF  Months Difference:
+
+SELECT DATEDIFF(MONTH, '2026-01-01', '2026-04-01');
+-- Output: 3
+3)NO OF  Years Difference
+
+SELECT DATEDIFF(YEAR, '2024-01-01', '2026-01-01');
+-- Output: 2
+
+
+
+4) Hours Difference
+SELECT DATEDIFF(HOUR,
+       '2026-06-18 10:00:00',
+       '2026-06-18 15:00:00');
+-- Output: 5
+
+5) Minutes Difference
+
+SELECT DATEDIFF(MINUTE,
+       '2026-06-18 10:00:00',
+       '2026-06-18 10:30:00');
+
+-- Output: 30
+
+6) Seconds Difference
+
+SELECT DATEDIFF(SECOND,
+       '2026-06-18 10:00:00',
+       '2026-06-18 10:01:00');
+
+-- Output: 60
+
+ Employee Based Queries
+
+ Employee Experience in Years
+
+SELECT ENAME,HIREDATE,DATEDIFF(YEAR, HIREDATE, CURRENT_DATE()) AS EXP
+FROM EMP;
+
+ Days Worked by Employee
+
+SELECT ENAME,DATEDIFF(DAY, HIREDATE, CURRENT_DATE()) AS DAYS_WORKED
+FROM EMP;
+
+Employees Worked More Than 40 Years
+
+SELECT *
+FROM EMP
+WHERE DATEDIFF(YEAR, HIREDATE, CURRENT_DATE()) > 40;
 
 
