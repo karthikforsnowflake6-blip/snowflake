@@ -280,15 +280,6 @@ SELECT DATEADD(MINUTE, 15, '2026-06-18 10:00:00');
 
  Add Seconds:
 
-SELECT DATEADD(SECOND, 30, '2026-06-18 10:00:00'); 
+SELECT DATEADD(SECOND, 30, '2026-06-18 10:00:00'); -------2026-06-18 10:00:30
 
-If you want, I can also give you:
-✔ 
-DATEADD vs DATEDIFF difference
-✔ 
-Exam MCQs
-✔ 
-Real interview questions
-✔ 
-Practice exercises with answers
 
