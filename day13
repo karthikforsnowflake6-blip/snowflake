@@ -149,7 +149,7 @@ where rn<=3;
 3)DENSE_RANK()
 +++++++++++++++++
 
-GENERATES THE RANK WITH GAPE.
+GENERATES THE RANK WITHOUT GAPE.
 
  EX:
 
