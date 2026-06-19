@@ -138,10 +138,10 @@ from(select emp.*,RANK() OVER(partition by deptno  ORDER BY SAL DESc) as rn
 where rn<=1;
 
 
-Top 3 Salaries FROM EACH DEPT :(USE PARTITION BY DEPTNO)
+Top 3 Salaries FROM EACH DEPT WITH RANK GAPE:(USE PARTITION BY DEPTNO)
 
 select *
-from(select emp.*,ROW_NUMBER() OVER(partition by deptno  ORDER BY SAL DESc) as rn
+from(select emp.*,RANK() OVER(partition by deptno  ORDER BY SAL DESc) as rn
      from emp)
 where rn<=3;
 
