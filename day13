@@ -136,7 +136,7 @@ where rn=1;
 select *
 from(select emp.*,RANK() OVER(partition by deptno  ORDER BY SAL DESc) as rn
      from emp)
-where rn<=1;
+where rn<=3;
 
 
 Top 3 Salaries FROM EACH DEPT WITH RANK GAPE:(USE PARTITION BY DEPTNO)
