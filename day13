@@ -312,7 +312,7 @@ LAG with Offset
 
 Previous 2nd Employee Salary
 SELECT EMPNO,ENAME,SAL,
-       LAG(SAL,2) OVER(ORDER BY EMPNO) PREV2SAL
+       LEAD(SAL,2) OVER(ORDER BY EMPNO) PREV2SAL
 FROM EMP;
 
 Output
