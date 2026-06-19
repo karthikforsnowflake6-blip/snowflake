@@ -145,7 +145,65 @@ from(select emp.*,RANK() OVER(partition by deptno  ORDER BY SAL DESc) as rn
      from emp)
 where rn<=3;
 
-DENSE_RANK()
+3)DENSE_RANK()
++++++++++++++++++
+
+GENERATES THE RANK WITH GAPE.
+
+ EX:
+
+
+EX:ASSIGN SEQUENCE WITHOUT  GAP NOT DEPT WISE(NO PARTITION BY)
+
+select emp.*,DENSE_RANK() OVER( ORDER BY SAL DESc) as rn
+from emp;
+
+
+
+EX:ASSIGN SEQUENCE FROM EACH DEPT WISE WITHOUT  RANK GAPE (USE PARTITION BY)
+
+select emp.*,DENSE_RANK() OVER(PARTITION BY DEPTNO ORDER BY SAL DESc) as rn
+from emp;
+
+FIRST MAX SAL WITHOUT RANK GAPE;(DONT USE PARTITION BY DEPTNO)
+
+select *
+from(select emp.*,DENSE_RANK() OVER(ORDER BY SAL DESc) as rn
+     from emp)
+where rn=1;
+
+
+
+
+
+FIRST 3 MAX SAL WITHOUT RANK GAP(DONT USE PARTITION BY DEPTNO)
+
+select *
+from(select emp.*,RANK() OVER(ORDER BY SAL DESc) as rn
+     from emp)
+where rn=1;
+
+
+1ST MAX Salaries FROM EACH DEPT WITH RANK GAPE:(USE PARTITION BY DEPTNO)
+
+select *
+from(select emp.*,RANK() OVER(partition by deptno  ORDER BY SAL DESc) as rn
+     from emp)
+where rn<=1;
+
+
+Top 3 Salaries FROM EACH DEPT WITH RANK GAPE:(USE PARTITION BY DEPTNO)
+
+select *
+from(select emp.*,RANK() OVER(partition by deptno  ORDER BY SAL DESc) as rn
+     from emp)
+where rn<=3;
+
+
+
+
+
+
 SELECT ENAME,SAL,
        DENSE_RANK() OVER(ORDER BY SAL DESC) RN
 FROM EMP;
