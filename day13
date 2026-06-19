@@ -249,7 +249,7 @@ EMPNO	ENAME	SAL	PREVSAL	DIFF
 7521	WARD	1250	1600	-350
 7566	JONES	2975	1250	1725
 
-Employees Whose Salary Increased Compared to Previous Employee
+Employees Whose Salary MORE THAN  to Previous Employee
 
 SELECT *
 FROM(
@@ -293,6 +293,23 @@ EMPNO	ENAME	SAL	NEXTSAL	DIFF
 7499	ALLEN	1600	1250	350
 7521	WARD	1250	2975	-1725
 
+Employees Whose Salary MORE THAN  to NEXT Employee
+
+SELECT *
+FROM(
+    SELECT EMPNO,ENAME,SAL,
+           LAG(SAL) OVER(ORDER BY EMPNO) PREVSAL
+    FROM EMP
+)
+WHERE SAL > PREVSAL;
+
+
+
+
+
+
+
+
 LAG with Offset
 
 Previous 2nd Employee Salary
@@ -323,26 +340,3 @@ EMPNO	ENAME	SAL	NEXT2SAL
 7566	JONES	2975	2450
 
 
-2nd Highest Salary
-SELECT *
-FROM(
-    SELECT ENAME,SAL,
-           DENSE_RANK() OVER(ORDER BY SAL DESC) RN
-    FROM EMP
-)
-WHERE RN=2;
-Output
-ENAME	SAL
-SCOTT	3000
-FORD	3000
-Highest Salary in Each Department
-SELECT *
-FROM(
-    SELECT EMP.*,
-           DENSE_RANK() OVER(
-               PARTITION BY DEPTNO
-               ORDER BY SAL DESC
-           ) RN
-    FROM EMP
-)
-WHERE RN=1;
