@@ -217,7 +217,7 @@ where rn<=3;
 
 4)LAG()
 +++++++
-IT GIVES PREVIOUS DATA.
+IT GIVES PREVIOUS ROW DATA.
 
 
 Previous Employee Salary
