@@ -179,23 +179,23 @@ where rn=1;
 FIRST 3 MAX SAL WITHOUT RANK GAP(DONT USE PARTITION BY DEPTNO)
 
 select *
-from(select emp.*,RANK() OVER(ORDER BY SAL DESc) as rn
+from(select emp.*,DENSE_RANK() OVER(ORDER BY SAL DESc) as rn
      from emp)
 where rn=1;
 
 
-1ST MAX Salaries FROM EACH DEPT WITH RANK GAPE:(USE PARTITION BY DEPTNO)
+1ST MAX Salaries FROM EACH DEPT WITHOUT RANK GAPE:(USE PARTITION BY DEPTNO)
 
 select *
-from(select emp.*,RANK() OVER(partition by deptno  ORDER BY SAL DESc) as rn
+from(select emp.*,DENSE_RANK() OVER(partition by deptno  ORDER BY SAL DESc) as rn
      from emp)
 where rn<=1;
 
 
-Top 3 Salaries FROM EACH DEPT WITH RANK GAPE:(USE PARTITION BY DEPTNO)
+Top 3 Salaries FROM EACH DEPT WITHOUT RANK GAPE:(USE PARTITION BY DEPTNO)
 
 select *
-from(select emp.*,RANK() OVER(partition by deptno  ORDER BY SAL DESc) as rn
+from(select emp.*,DENSE_RANK() OVER(partition by deptno  ORDER BY SAL DESc) as rn
      from emp)
 where rn<=3;
 
