@@ -62,7 +62,7 @@ FIRST 3 MAX SAL (DONT USE PARTITION BY DEPTNO)
 select *
 from(select emp.*,ROW_NUMBER() OVER(ORDER BY SAL DESc) as rn
      from emp)
-where rn=1;
+where rn<=3;
 
 
 1ST MAX Salaries FROM EACH DEPT :(USE PARTITION BY DEPTNO)
