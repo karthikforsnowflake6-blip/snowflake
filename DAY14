@@ -52,7 +52,8 @@ WHERE EMP_COUNT>=6;
 
 CTE=COMMON TABLE EXPRESSION:
 ++++++++++++++++++++++++++
-
+A CTE (Common Table Expression) is a temporary named result set defined using the WITH clause that simplifies 
+complex queries, improves readability.
 
 SYNTAX:
 
@@ -113,7 +114,7 @@ WITH MY_CTE AS (SELECT COUNT(*),DEPTNO
 
 RECURSIVE CTE:
 ++++++++++++++
-
+Recursive CTE is a type of CTE that references itself to repeatedly UNTILL CONDITION BECOMES FALSE. 
 SYNTAX:
                
 WITH RECURSIVE CTE_NAME AS
