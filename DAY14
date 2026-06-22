@@ -52,9 +52,7 @@ WHERE EMP_COUNT>=6;
 
 CTE=COMMON TABLE EXPRESSION:
 ++++++++++++++++++++++++++
-A CTE (Common Table Expression) is a temporary named result set defined using the WITH clause that simplifies 
-complex queries, improves readability.
-
+IT IS A TEMPERORY RESULT SET USEDN TO IMPROVE THE READABILITY AND MAKES THE COMPLEX QUERY EASIER.
 SYNTAX:
 
 WITH CTE_NAME AS
