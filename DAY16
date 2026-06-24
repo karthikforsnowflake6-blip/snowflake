@@ -1,11 +1,12 @@
 STORED PROCEDURE;
-
 One-Line Definition
 
-A Stored Procedure is a precompiled and reusable set of
-SQL statements stored in the database that can be executed by calling its name.
+A Stored Procedure is a precompiled and reusable set
+of SQL statements stored in the database that can be executed by calling its name.
 
-SYNTAX:
+
+SYNTAX;
+
 
 CREATE OR REPLACE PROCEDURE PROCEDURE_NAME( [ PARAMETER1 DATATYPE ],[ PARAMETER2 DATATYPE ],,,,N)
 RETURNS DATATYPE
@@ -49,9 +50,10 @@ CALL HELLO();
 
 
 
-1. WITHOUT PARAMETER Stored Procedure
+WITHOUT PARAMETER Stored Procedure
 INSERT;
 +++++++
+
 
 DELETE FROM EMP WHERE ENAME='KARTHIK';
 
@@ -130,9 +132,10 @@ CALL DELETE_EMP();
 SELECT * FROM EMP;
 
 2. WITH PARAMETER Stored Procedure
-
 INSERT;
 +++++++
+
+
 
 CREATE OR REPLACE PROCEDURE INSERT_EMPPAR(P_EMPNO NUMBER,P_ENAME varchar,P_SAL NUMBER)
 RETURNS varchar
@@ -140,6 +143,7 @@ LANGUAGE SQL
 AS
 $$
 
+DECLARE P_ENAME DEFAULT 'SMITH';
 
 BEGIN
 
@@ -164,7 +168,7 @@ select  * from emp;
 
 
 UPDATE;
-+++++++
+++++++
 
 CREATE OR REPLACE PROCEDURE UPDATE_EMPPAR(P_EMPNO NUMBER,P_SAL NUMBER)
 RETURNS STRING
@@ -189,7 +193,7 @@ CALL SP_UPDATE_EMP(7369,3000);
 SELECT * FROM EMP;
 
 DELETE;
-
+++++++
 
 
 CREATE OR REPLACE PROCEDURE DELETE_EMPPAR(P_EMPNO NUMBER)
