@@ -6,9 +6,6 @@ A Stored Procedure is a precompiled and reusable set of
 SQL statements stored in the database that can be executed by calling its name.
 
 
-SYNTAX:
-
-
 
 
 CREATE OR REPLACE PROCEDURE PROCEDURE_NAME( [ PARAMETER1 DATATYPE ],[ PARAMETER2 DATATYPE ],,,,N)
