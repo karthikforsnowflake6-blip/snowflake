@@ -138,10 +138,15 @@ New row:
 is marked as INSERT.
 (totally 4 row)
 
+
+
+
+
+
 DYNAMIC TABLE:
 ++++++++++++;
-A Dynamic Table automatically refreshes and keeps transformed data up to date based on a query.
 
+A Dynamic Table automatically refreshes and keeps transformed data up to date based on a query.
 
 
 CREATE OR REPLACE TABLE STUDENT_RAW
@@ -158,22 +163,19 @@ INSERT INTO STUDENT_RAW VALUES
 (2,'RAJA',45),
 (3,'RAM',90);
 
-
 SELECT * FROM STUDENT_RAW;
 
+i want passed students data(50 is a passmark)
 
-i want the student data who passed passmark is 50 .
 SELECT SID,
        SNAME,
        MARKS
 FROM STUDENT_RAW
 WHERE MARKS >= 50;
 
-problem:
+problem daily we cannot execute same query.
 
-daily i cannot execute same query.
-
-so create dynamic table.
+so create dynamic table:
 
 
 CREATE OR REPLACE DYNAMIC TABLE PASS_STUDENTS
