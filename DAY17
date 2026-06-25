@@ -29,6 +29,7 @@ SID	SNAME
 1	A
 2	B
 3	C
+
 Step 2: Create Stream
 CREATE OR REPLACE STREAM STUDENT_STREAM
 ON TABLE STUDENT;
@@ -64,7 +65,8 @@ Output:
 
 SID	SNAME	METADATA$ACTION
 1	A	DELETE
-Explanation
+
+Explanation:
 
 The Stream captured that row SID=1 was deleted.
 
@@ -94,7 +96,9 @@ The Stream now contains:
 
 One deleted row
 One inserted row
+
 Step 5: Update Operation
+
 UPDATE STUDENT
 SET SNAME='Y'
 WHERE SID=2;
@@ -132,19 +136,116 @@ New row:
 (2,'Y')
 
 is marked as INSERT.
+(totally 4 row)
 
-Therefore, an UPDATE generates two records in the Stream.
+DYNAMIC TABLE:
+++++++++++++;
+A Dynamic Table automatically refreshes and keeps transformed data up to date based on a query.
 
-Step 6: Duplicate Insert
-INSERT INTO STUDENT
-VALUES(4,'D');
 
-Table Data:
 
-SID	SNAME
-2	Y
-3	C
-4	D
-4	D
+CREATE OR REPLACE TABLE STUDENT_RAW
+(
+    SID NUMBER,
+    SNAME STRING,
+    MARKS NUMBER
+);
 
+
+
+INSERT INTO STUDENT_RAW VALUES
+(1,'XYZ',85),
+(2,'RAJA',45),
+(3,'RAM',90);
+
+
+SELECT * FROM STUDENT_RAW;
+
+
+i want the student data who passed passmark is 50 .
+SELECT SID,
+       SNAME,
+       MARKS
+FROM STUDENT_RAW
+WHERE MARKS >= 50;
+
+problem:
+
+daily i cannot execute same query.
+
+so create dynamic table.
+
+
+CREATE OR REPLACE DYNAMIC TABLE PASS_STUDENTS
+TARGET_LAG = '1 MINUTE'
+WAREHOUSE = COMPUTE_WH
+AS
+SELECT SID,
+       SNAME,
+       MARKS
+FROM STUDENT_RAW
+WHERE MARKS >= 50;
+
+
+
+SELECT * FROM PASS_STUDENTS;
+
+
+INSERT INTO STUDENT_RAW
+VALUES (4,'ARUN',75);
+
+
+SELECT * FROM DT_PASS_STUDENT;
+
+
+INSERT INTO STUDENT_RAW VALUES
+(4,'ARUN',75),
+(5,'VIJAY',35),
+(6,'AJAY',68),
+(7,'SURESH',92),
+(8,'RAMESH',48),
+(9,'KUMAR',55),
+(10,'PRIYA',81),
+(11,'DIVYA',39),
+(12,'ANU',64),
+(13,'MANOJ',73);
+
+
+SELECT * FROM STUDENT_RAW;
+
+SELECT * FROM PASS_STUDENTS;
+
+SELECT SID,
+       SNAME,
+       MARKS
+FROM STUDENT_RAW
+WHERE MARKS >= 50;
+
+
+INSERT INTO STUDENT_RAW VALUES
+(14,'DEEPA',88),
+(15,'KIRAN',51),
+(16,'NAVEEN',27),
+(17,'LATHA',95),
+(18,'SANJAY',72),
+(19,'MEENA',44),
+(20,'RAHUL',67),
+(21,'POOJA',79),
+(22,'GOKUL',58),
+(23,'VIGNESH',33);
+
+
+
+SELECT * FROM STUDENT_RAW;
+
+
+SELECT SID,
+       SNAME,
+       MARKS
+FROM STUDENT_RAW
+WHERE MARKS >= 50;
+
+
+SELECT *
+FROM PASS_STUDENTS;
 
