@@ -1,0 +1,150 @@
+Snowflake Stream Notes
+++++++++++++++++++++
+
+A Stream in Snowflake is a Change Data Capture (CDC) object that tracks changes made to a table.
+
+It records:
+
+INSERT operations
+UPDATE operations
+DELETE operations
+
+
+Step 1: Create Table
+CREATE OR REPLACE TABLE STUDENT
+(
+    SID NUMBER,
+    SNAME STRING
+);
+
+Insert data:
+
+INSERT INTO STUDENT VALUES(1,'A');
+INSERT INTO STUDENT VALUES(2,'B');
+INSERT INTO STUDENT VALUES(3,'C');
+
+Table Data:
+
+SID	SNAME
+1	A
+2	B
+3	C
+Step 2: Create Stream
+CREATE OR REPLACE STREAM STUDENT_STREAM
+ON TABLE STUDENT;
+
+Check Stream:
+
+SELECT * FROM STUDENT_STREAM;
+
+Output:
+
+No rows returned
+Why?
+
+A Stream starts tracking changes only after it is created.
+
+The existing rows already present in the table are not considered changes.
+
+Step 3: Delete Operation
+DELETE FROM STUDENT
+WHERE SID = 1;
+
+Table Data:
+
+SID	SNAME
+2	B
+3	C
+
+Stream:
+
+SELECT * FROM STUDENT_STREAM;
+
+Output:
+
+SID	SNAME	METADATA$ACTION
+1	A	DELETE
+Explanation
+
+The Stream captured that row SID=1 was deleted.
+
+Step 4: Insert Operation
+INSERT INTO STUDENT
+VALUES(4,'D');
+
+Table Data:
+
+SID	SNAME
+2	B
+3	C
+4	D
+
+Stream:
+
+SELECT * FROM STUDENT_STREAM;
+
+Output:
+
+SID	SNAME	ACTION
+1	A	DELETE
+4	D	INSERT
+
+
+The Stream now contains:
+
+One deleted row
+One inserted row
+Step 5: Update Operation
+UPDATE STUDENT
+SET SNAME='Y'
+WHERE SID=2;
+
+Table Data:
+
+SID	SNAME
+2	Y
+3	C
+4	D
+
+Stream:
+
+SELECT * FROM STUDENT_STREAM;
+
+Output:
+
+SID	SNAME	ACTION	ISUPDATE
+2	B	DELETE	TRUE
+2	Y	INSERT	TRUE
+Explanation
+
+Snowflake treats an UPDATE as:
+
+DELETE + INSERT
+
+Old row:
+
+(2,'B')
+
+is marked as DELETE.
+
+New row:
+
+(2,'Y')
+
+is marked as INSERT.
+
+Therefore, an UPDATE generates two records in the Stream.
+
+Step 6: Duplicate Insert
+INSERT INTO STUDENT
+VALUES(4,'D');
+
+Table Data:
+
+SID	SNAME
+2	Y
+3	C
+4	D
+4	D
+
+
