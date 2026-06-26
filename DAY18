@@ -1,0 +1,203 @@
+TASK:
++++++;
+TASK → Runs SQL automatically on a schedule.
+
+SYNTAX:
+
+CREATE OR REPLACE TASK task_name
+WAREHOUSE = warehouse_name
+SCHEDULE = '1 MINUTE'
+AS
+
+-- SQL Statement
+sql_query;
+
+
+
+
+CREATE OR REPLACE TABLE TEST
+(
+    ID NUMBER
+);
+
+
+
+
+Step 2: Task;
+
+
+CREATE OR REPLACE TASK TEST_TASK
+WAREHOUSE = MYWAREHOUSE
+SCHEDULE = '1 MINUTE'
+AS
+
+INSERT INTO TEST VALUES (1);
+
+TO RUN TASK:
+
+ALTER TASK TEST_TASK RESUME;
+
+TO PAUSE TASK:
+
+ALTER TASK TEST_TASK SUSPEND;
+
+SELECT * FROM TEST;
+
+FOR EVERY ONE MINUTE 1 ADDED.
+
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++;
+LOAD THE DATA FROM SOURCE TABLE(STUDENT_RAW) TO TARGET TABLE (STUDENT_PASS)
+IF THEY SCORE>=50;
+
+
+
+--====================================================
+-- STEP 1 : Create Source Table
+--====================================================
+
+CREATE OR REPLACE TABLE STUDENT_RAW
+(
+    SID NUMBER,
+    SNAME STRING,
+    MARKS NUMBER
+);
+
+--====================================================
+-- STEP 2 : Create Target Table
+--====================================================
+
+CREATE OR REPLACE TABLE PASS_STUDENT
+(
+    SID NUMBER,
+    SNAME STRING,
+    MARKS NUMBER
+);
+
+--====================================================
+-- STEP 3 : Create Stream
+--====================================================
+
+CREATE OR REPLACE STREAM STUDENT_STREAM
+ON TABLE STUDENT_RAW;
+
+--====================================================
+-- STEP 4 : Create Task
+--====================================================
+
+--SHOW WAREHOUSES;
+CREATE OR REPLACE TASK PASS_STUDENT_TASK
+WAREHOUSE = MYWAREHOUSE
+SCHEDULE = '1 MINUTE'
+AS
+
+MERGE INTO PASS_STUDENT T
+USING
+(
+    SELECT SID, SNAME, MARKS
+    FROM (SELECT SID,SNAME,MARKS,ROW_NUMBER()
+    OVER(PARTITION BY SID ORDER BY SID) AS RN
+          FROM STUDENT_STREAM
+          
+          WHERE MARKS >= 50
+          )
+    WHERE RN = 1
+) S
+
+
+ON T.SID = S.SID
+
+WHEN MATCHED THEN
+UPDATE SET
+    T.SNAME = S.SNAME,
+    T.MARKS = S.MARKS
+
+WHEN NOT MATCHED THEN
+INSERT(SID,SNAME,MARKS) VALUES(S.SID,S.SNAME,S.MARKS);
+
+--====================================================
+-- STEP 5 : Resume Task
+--====================================================
+
+SELECT * FROM STUDENT_RAW;
+
+SELECT * FROM PASS_STUDENT;
+
+ALTER TASK PASS_STUDENT_TASK SUSPEND;
+
+
+--truncate table student_raw;
+--====================================================
+-- STEP 6 : Insert Initial Data
+--====================================================
+
+INSERT INTO STUDENT_RAW VALUES
+(1,'KARTHIK',85),
+(2,'RAJA',45),
+(3,'RAM',90);
+
+
+SELECT * FROM STUDENT_RAW;
+
+SELECT * FROM PASS_STUDENT;
+
+--====================================================
+-- STEP 7 : Check Stream
+--====================================================
+
+SELECT * FROM STUDENT_STREAM;
+
+--====================================================
+-- STEP 8 : Wait 1 minute (or Execute Task)
+--====================================================
+DELETE FROM STUDENT_RAW
+WHERE SID=1;
+
+--Expected Output
+
+--1 KARTHIK 85
+--3 RAM      90
+
+--====================================================
+-- STEP 10 : Insert Duplicate Data
+--====================================================
+
+INSERT INTO STUDENT_RAW VALUES
+(4,'ARUN',75),
+(4,'ARUN',75),
+(5,'VIJAY',35),
+(6,'AJAY',68),
+(6,'AJAY',68);
+
+--====================================================
+-- STEP 11 : Check Stream
+--====================================================
+SELECT * FROM STUDENT_RAW;
+SELECT * FROM STUDENT_STREAM;
+
+--====================================================
+-- STEP 12 : Execute Task
+--====================================================
+
+EXECUTE TASK PASS_STUDENT_TASK;
+
+--====================================================
+-- STEP 13 : Final Output
+--====================================================
+
+SELECT * FROM PASS_STUDENT;
+
+
+
+STUDENT_RAW → Source table.
+PASS_STUDENT → Target table.
+STREAM → Tracks INSERT/UPDATE/DELETE changes.
+TASK → Runs SQL automatically on a schedule.
+MERGE → Insert new rows and update existing rows.
+ROW_NUMBER() → Removes duplicate SID values.
+MARKS >= 50 → Filters only passed students.
+RESUME → Starts the task.
+SUSPEND → Stops the task.
+EXECUTE TASK → Runs the task immediately.
