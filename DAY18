@@ -121,14 +121,14 @@ INSERT(SID,SNAME,MARKS) VALUES(S.SID,S.SNAME,S.MARKS);
 -- STEP 5 : Resume Task
 --====================================================
 
+ALTER TASK PASS_STUDENT_TASK RESUME;
+
 SELECT * FROM STUDENT_RAW;
 
 SELECT * FROM PASS_STUDENT;
 
-ALTER TASK PASS_STUDENT_TASK SUSPEND;
 
 
---truncate table student_raw;
 --====================================================
 -- STEP 6 : Insert Initial Data
 --====================================================
@@ -181,7 +181,7 @@ SELECT * FROM STUDENT_STREAM;
 -- STEP 12 : Execute Task
 --====================================================
 
-EXECUTE TASK PASS_STUDENT_TASK;
+EXECUTE TASK PASS_STUDENT_TASK;(RUN EARLIER)
 
 --====================================================
 -- STEP 13 : Final Output
