@@ -1,0 +1,169 @@
+ER DIAGRAM
+-----------;
+
+CREATE OR REPLACE TABLE COLLEGE
+(
+    COLLEGE_ID NUMBER PRIMARY KEY,
+    COLLEGE_NAME STRING
+);
+
+INSERT INTO COLLEGE
+VALUES
+(1,'ABC Engineering College'),
+(2,'XYZ Arts College');
+
+select * from xyz;
+
+CREATE OR REPLACE TABLE STUDENT
+(
+    STUD_ID NUMBER PRIMARY KEY,
+    FIRST_NAME STRING,
+    LAST_NAME STRING,
+    DOB DATE,
+
+    ADDRESS_NO STRING,
+    CITY STRING,
+    DISTRICT STRING,
+
+    COLLEGE_ID NUMBER,
+
+    FOREIGN KEY (COLLEGE_ID)
+    REFERENCES COLLEGE(COLLEGE_ID)
+);
+
+INSERT INTO STUDENT
+VALUES(101,'praveen','K','2001-05-15','12','Chennai','Chennai',1),
+         (102,'Rahul','S','2002-03-20','25','Bangalore','Chennai',2);
+
+university:
+============;
+--==================================================
+-- 1. DEPARTMENT
+--==================================================
+
+CREATE OR REPLACE TABLE DEPARTMENT
+(
+    DEPT_ID NUMBER PRIMARY KEY,
+    DEPT_NAME STRING,
+    LOCATION STRING
+);
+INSERT INTO DEPARTMENT VALUES
+(101,'Computer Science','Chennai'),
+(102,'Mechanical','Bangalore'),
+(103,'Civil','Delhi');
+
+select * from department;
+--==================================================
+-- 2. STUDENT
+-- Department (1) ---- (M) Student
+--==================================================
+;
+CREATE OR REPLACE TABLE STUDENT
+(
+    STUDENT_ID NUMBER PRIMARY KEY,
+    STUDENT_NAME STRING,
+    EMAIL STRING,
+    DATE_OF_BIRTH DATE,
+    DEPT_ID NUMBER,
+
+    FOREIGN KEY (DEPT_ID)
+    REFERENCES DEPARTMENT(DEPT_ID)
+);
+INSERT INTO STUDENT VALUES
+(1001,'Karthik','karthik@gmail.com','2002-05-15',101),
+(1002,'Arun','arun@gmail.com','2002-08-20',101),
+(1003,'Priya','priya@gmail.com','2003-01-12',102),
+(1004,'Rahul','rahul@gmail.com','2002-10-18',103);
+--==================================================
+-- 3. INSTRUCTOR
+-- Department (1) ---- (M) Instructor
+--==================================================
+
+CREATE OR REPLACE TABLE INSTRUCTOR
+(
+    INSTRUCTOR_ID NUMBER PRIMARY KEY,
+    INSTRUCTOR_NAME STRING,
+    EMAIL STRING,
+    DEPT_ID NUMBER,
+
+    CONSTRAINT FK_INSTRUCTOR_DEPARTMENT
+    FOREIGN KEY (DEPT_ID)
+    REFERENCES DEPARTMENT(DEPT_ID)
+);
+INSERT INTO INSTRUCTOR VALUES
+(201,'Ramesh','ramesh@gmail.com',101),
+(202,'Suresh','suresh@gmail.com',102),
+(203,'Lakshmi','lakshmi@gmail.com',103);
+
+
+
+--==================================================
+-- 4. COURSE
+-- Instructor (1) ---- (M) Course
+--==================================================
+
+
+CREATE OR REPLACE TABLE COURSE
+(
+    COURSE_ID NUMBER PRIMARY KEY,
+    COURSE_NAME STRING,
+    CREDITS NUMBER,
+    INSTRUCTOR_ID NUMBER,
+
+    CONSTRAINT FK_COURSE_INSTRUCTOR
+    FOREIGN KEY (INSTRUCTOR_ID)
+    REFERENCES INSTRUCTOR(INSTRUCTOR_ID)
+);
+
+
+INSERT INTO COURSE VALUES
+(301,'Database Systems',4,201),
+(302,'Operating Systems',3,201),
+(303,'Thermodynamics',4,202),
+(304,'Structural Design',3,203);
+
+
+--==================================================
+-- 5. ENROLLMENT
+-- Student (M) ---- (M) Course
+--==================================================
+
+CREATE OR REPLACE TABLE ENROLLMENT
+(
+    STUDENT_ID NUMBER,
+    COURSE_ID NUMBER,
+    ENROLL_DATE DATE,
+    GRADE STRING,
+
+    PRIMARY KEY (STUDENT_ID, COURSE_ID),
+
+    FOREIGN KEY (STUDENT_ID)
+    REFERENCES STUDENT(STUDENT_ID),
+
+    FOREIGN KEY (COURSE_ID)
+    REFERENCES COURSE(COURSE_ID)
+);
+
+INSERT INTO ENROLLMENT VALUES
+(1001,301,'2025-06-01','A'),
+(1001,302,'2025-06-01','A+'),
+(1002,301,'2025-06-02','B+'),
+(1003,303,'2025-06-03','A'),
+(1004,304,'2025-06-04','A+');
+
+--==================================================
+-- VERIFY DATA
+--==================================================
+
+SELECT * FROM DEPARTMENT;
+SELECT * FROM STUDENT;
+SELECT * FROM INSTRUCTOR;
+SELECT * FROM COURSE;
+SELECT * FROM ENROLLMENT;
+
+
+
+
+
+
+
