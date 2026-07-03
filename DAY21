@@ -19,10 +19,7 @@ Click Create bucket.
 Enter the following information:
 
 Bucket Name:
-snowflake-s3-new-bucket3
-
-AWS Region:
-Asia Pacific (Mumbai) ap-south-1
+snowflake-s3-new-bucket4
 
 Leave all other settings as default.
 
