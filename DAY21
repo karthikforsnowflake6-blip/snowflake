@@ -1,0 +1,237 @@
+AWS S3 Setup for Snowflake – Step-by-Step Guide
+Step 1: Create an AWS Account
+Go to the AWS website.
+Click Create an AWS Account.
+Enter the following details:
+Email Address
+Password
+AWS Account Name
+Verify your email address.
+Add your payment method.
+Complete phone verification.
+Select the Free Tier plan.
+Sign in to the AWS Management Console.
+Step 2: Create an S3 Bucket
+In the AWS Console, search for S3.
+Click S3.
+Click Create bucket.
+
+Enter the following information:
+
+Bucket Name:
+snowflake-s3-new-bucket3
+
+AWS Region:
+Asia Pacific (Mumbai) ap-south-1
+
+Leave all other settings as default.
+
+Click Create bucket.
+
+Step 3: Upload Files to the Bucket
+Open the bucket you created.
+Click Upload.
+Click Add files.
+Select your files.
+
+Example:
+
+emp.csv
+dept.csv
+Click Upload.
+Step 4: Create an IAM User
+Search for IAM in the AWS Console.
+Open IAM.
+Select Users from the left menu.
+Click Create user.
+
+Example:
+
+User Name:
+snowflake_new_user
+
+Click Next.
+
+Step 5: Assign Permissions
+
+Choose:
+
+Attach policies directly
+
+Search for:
+
+AmazonS3FullAccess
+
+Select the policy.
+
+Click:
+
+Next
+
+Finally, click:
+
+Create user
+Step 6: Generate Access Keys
+Open the IAM user you created.
+Go to the Security credentials tab.
+Scroll down to Access keys.
+Click Create access key.
+Select:
+Command Line Interface (CLI)
+Click Next.
+Click Create access key.
+
+You will receive:
+
+Access Key ID
+
+Secret Access Key
+
+Important: Download the CSV file or copy both keys immediately. The Secret Access Key is displayed only once.
+
+
+
+
+SNOWFLAKE SETUP
+---------------
+
+STEP 1;CREATE TABLE
+
+CREATE OR REPLACE TABLE DEPT
+(
+    DEPTNO NUMBER,
+    DNAME STRING,
+    LOC STRING
+);
+
+select * from dept;
+
+STEP 2 
+-------
+
+CREATE FILE FORMATE;
+
+CREATE OR REPLACE FILE FORMAT MY_DEPT_FORMAT
+TYPE = CSV
+SKIP_HEADER = 1;
+
+
+
+STEP 3
+------
+
+CREATE STAGE
+AND PROVIDE ACCESS KEY.
+
+CREATE OR REPLACE STAGE MY_S3_STAGE
+URL='s3://snowflake-s3newbucket4'
+CREDENTIALS=(
+AWS_KEY_ID='**************',
+AWS_SECRET_KEY='******************************');
+
+
+LIST @MY_S3_STAGE;
+
+
+STEP 5
+------
+
+CREATE PIPE TO LOAD THE DATA FROM STAGE TO SNOWFLAKE TABLE.
+
+
+CREATE OR REPLACE PIPE DEPT_PIPE
+AS
+COPY INTO DEPT
+FROM @MY_S3_STAGE
+FILE_FORMAT = (FORMAT_NAME='MY_DEPT_FORMAT');
+
+
+
+
+STEP 6
+------
+MANUAL REFRESH
+-----------------
+
+ALTER PIPE DEPT_PIPE REFRESH;
+
+select * froM EMP;
+
+
+
+
+FOR AUTO REFRESH:
+-----------------
+
+STEP 1; 
+--------
+CREATE ANY TABLE
+----------------
+
+CREATE OR REPLACE TABLE EMP
+(
+EMPNO NUMBER,
+ENAME STRING,
+JOB STRING,
+MGR NUMBER,
+HIREDATE DATE,
+SAL NUMBER,
+COMM NUMBER,
+DEPTNO NUMBER
+);
+
+
+select * from emp;
+
+STEP 2:
+-------
+CREATE PIPE FOR EMP;
+
+
+CREATE OR REPLACE PIPE EMP_PIPE
+AS
+COPY INTO EMP
+FROM @MY_S3_STAGE
+FILE_FORMAT = (FORMAT_NAME = 'MY_CSV_FORMAT');
+
+
+
+STEP 3;
+-------
+
+
+select * from emp;(NO ROWS)
+
+WHY BECAUS OUR IN S3 BUCKET WE NEED TO UPLOAD EMP.CSV;
+
+NOW UPLOAD EMP.CSV IN AWS S3 BUCKET.
+
+STEP 4;
+-------
+
+CREATE TASK FOR AUTO REFRESH.
+------------------------------
+
+
+CREATE OR REPLACE TASK REFRESH_PIPE_TASK
+WAREHOUSE = MYWH
+SCHEDULE = '1 MINUTE'
+AS
+ALTER PIPE EMP_PIPE REFRESH;
+
+
+STEP 5;
+-------
+RESUME THE TASK.
+
+ALTER TASK REFRESH_PIPE_TASK RESUME;
+
+
+FOR SUSPEND
+-------------
+
+ALTER TASK REFRESH_PIPE_TASK suspend;
+
+
+select * from emp;(ROWS DISPLAYED) WITHIN 1 MIN.
+
