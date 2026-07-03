@@ -152,7 +152,7 @@ MANUAL REFRESH
 
 ALTER PIPE DEPT_PIPE REFRESH;
 
-select * froM EMP;
+select * froM DEPT;
 
 
 
@@ -179,6 +179,12 @@ DEPTNO NUMBER
 
 
 select * from emp;
+
+
+CREATE OR REPLACE FILE FORMAT MY_CSV_FORMAT
+TYPE = CSV
+SKIP_HEADER = 1;
+
 
 STEP 2:
 -------
